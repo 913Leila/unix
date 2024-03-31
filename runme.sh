@@ -1,17 +1,17 @@
-#!/bin/bash
-
-make 
+#!/bin/bash 
 
 python3 create_fileA.py
 
-./create_my_sparse_file fileA fileB
+make
+
+./myprogram fileA fileB
 
 gzip -k fileA
 gzip -k fileB
 
-gzip -cd fileB.gz | ./create_my_sparse_file fileC
+gzip -cd fileB.gz | ./myprogram fileC
 
-./create_my_sparse_file fileA fileD 100
+./myprogram fileA fileD -b 100
 
 stat "%n %s" fileA 
 stat "%n %s" fileA.gz
