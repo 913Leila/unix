@@ -13,9 +13,8 @@ gzip -cd fileB.gz | ./myprogram fileC
 
 ./myprogram fileA fileD -b 100
 
-stat fileA 
-stat fileA.gz
-stat fileB
-stat fileB.gz
-stat fileC
-stat fileD
+stat --printf "%n size is %s\n"  fileA 
+stat --printf "%n size is %s\n" fileA.gz
+stat --printf "%n size is %s\n" fileB.gz
+stat --printf "%n size is %s\n" fileC
+stat --printf "%n size is %s\n" fileD

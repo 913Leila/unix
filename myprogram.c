@@ -4,12 +4,12 @@
 #include <errno.h>
 #include <fcntl.h>
 
-int handle_error(int input, int output, char *message){
+static int handle_error(int input, int output, char *message){
 	perror(message);
-	close_files(input, output);
+	close(input);
+	close(output);
 	return 1;
 }
-
 
 int is_block_zero(char *block, int size) {
 	for (int i = 0; i < size; i++){
@@ -18,13 +18,6 @@ int is_block_zero(char *block, int size) {
 	}
 	return 1;
 }
-
-void close_files(int input, int output){
-	close(input);
-	close(output);
-}
-
-
 
 void create_sparse_file(int input, int output, int block_size){
 	char *block = malloc(block_size);
@@ -82,7 +75,8 @@ int main(int argc, char *argv[]){
 		return handle_error(input, output, "Open file error");
 		
 	create_sparse_file(input, output, block_size);
-	close_files(input, output);
+	close(input);
+	close(output);
 	
 	return 0;
 }
