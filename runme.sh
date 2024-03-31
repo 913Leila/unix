@@ -13,9 +13,9 @@ gzip -cd fileB.gz | ./myprogram fileC
 
 ./myprogram fileA fileD -b 100
 
-stat "%n %s" fileA 
-stat "%n %s" fileA.gz
-stat "%n %s" fileB
-stat "%n %s" fileB.gz
-stat "%n %s" fileC
-stat "%n %s" fileD
+stat fileA 
+stat fileA.gz
+stat fileB
+stat fileB.gz
+stat fileC
+stat fileD
