@@ -1,8 +1,8 @@
 #!/bin/bash 
 
-python3 create_fileA.py
+make 
 
-make
+python3 create_fileA.py
 
 ./myprogram fileA fileB
 
